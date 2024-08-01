@@ -1,0 +1,44 @@
+"use server";
+
+import { revalidatePath } from "next/cache";
+import { put, del } from "@vercel/blob";
+import { isFileBiggerThan5MB } from "@/lib/utils";
+import type { FormState } from "@/components/form/types";
+
+export async function uploadFile(prevState: FormState, formData: FormData) {
+  const file = formData.get("file") as File;
+  if (isFileBiggerThan5MB(file)) {
+    return {
+      status: "error",
+      message: "Sorry file is too big. Should be 5MB or less.",
+    } as FormState;
+  }
+
+  try {
+    const blob = await put(file.name, file, {
+      access: "public",
+    });
+    revalidatePath("/");
+    return {
+      status: "success",
+      message: `File ${blob.pathname} uploaded successfully.`,
+    } as FormState;
+  } catch (e) {
+    return { status: "error", message: "Failed to upload file" } as FormState;
+  }
+}
+
+export async function deleteFile(prevState: FormState, formData: FormData) {
+  const fileUrl = formData.get("fileUrl") as string;
+
+  try {
+    await del(fileUrl);
+    revalidatePath("/");
+    return {
+      status: "success",
+      message: "",
+    } as FormState;
+  } catch (e) {
+    return { status: "error", message: "" } as FormState;
+  }
+}
