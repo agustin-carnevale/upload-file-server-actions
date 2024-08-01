@@ -15,15 +15,18 @@ export async function uploadFile(prevState: FormState, formData: FormData) {
   }
 
   try {
+    // HERE would be the place for 1-a call a third party API (example.com) when the upload begins
     const blob = await put(file.name, file, {
       access: "public",
     });
+    // HERE would be the place for 1-b call a third party API (example.com) when the upload succeeds
     revalidatePath("/");
     return {
       status: "success",
       message: `File ${blob.pathname} uploaded successfully.`,
     } as FormState;
   } catch (e) {
+    // HERE would be the place for 1-c call a third party API (example.com) when the upload fails
     return { status: "error", message: "Failed to upload file" } as FormState;
   }
 }

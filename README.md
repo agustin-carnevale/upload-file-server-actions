@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Javascript Assesment
+
+Upload, delete and rename files using @vercel/blob and nextjs v14 with server actions.
+
+[Assesment docs](https://docs.google.com/document/u/0/d/e/2PACX-1vQjRyBnqepBVHRplBRd54gkhiR3gAhXT0zNWqu2M-HzEkwwlCSMCawserIrcXyZ0IXPsG3L3Cj-eEH3/pub?urp=gmail_link&pli=1)
 
 ## Getting Started
 
-First, run the development server:
+To run the project locally:
 
 ```bash
-npm run dev
-# or
+git clone
+cd project-directory
+cp .env.local .env
+(and fill BLOB_READ_WRITE_TOKEN)
+yarn install
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Notes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To be considered, this was just a task (exercise) where I had to interpret the instructions without being able to ask questions to clarify the details.
+Also keep in mind that I did the minimum and necessary, but obviously there is a lot that can be polished from the user experience, the loading states, the error messages and even the styles.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+I do realize the user experience is not the best as it is but could be improve without to much adittions to the code, for this taks I only focused on the main functionality and the use of server actions to handle forms.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+In regards to 1-a, 1-b and 1-c, I did not really understand what was the purpose of those (just calling a random 3rd party API), but I did leave some comments on the code to mark where I would make those calls if necesary, for example for tracing/observability/monitoring purposes (if those were important points we can always discuss it and I could make the changes needed).
