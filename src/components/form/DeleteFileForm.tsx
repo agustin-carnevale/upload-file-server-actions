@@ -1,8 +1,8 @@
 "use client";
 
 import { useFormStatus, useFormState } from "react-dom";
-import { deleteFile } from "@/actions/file-actions";
 import { Trash } from "lucide-react";
+import { deleteFile } from "@/actions/file-actions";
 import { Button } from "@/components/ui/button";
 import type { FormState } from "./types";
 
