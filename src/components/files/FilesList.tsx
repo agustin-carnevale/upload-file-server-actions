@@ -1,6 +1,7 @@
 import { list } from "@vercel/blob";
 import { wait } from "@/lib/utils";
 import { DeleteForm } from "@/components/form/DeleteFileForm";
+import { EditFileButton } from "./EditFileButton";
 
 const FAKE_DELAY_MS = 4000;
 
@@ -15,12 +16,13 @@ export async function FilesList() {
 
   return (
     <ul>
-      {listOfFiles.blobs.map((file) => (
-        <li key={file.url} className="my-3">
-          <a href={file.downloadUrl} className="hover:bg-slate-200">
-            {file.pathname}
+      {listOfFiles.blobs.map((blob) => (
+        <li key={blob.url} className="my-3">
+          <a href={blob.downloadUrl} className="hover:bg-slate-200">
+            {blob.pathname}
           </a>
-          <DeleteForm fileUrl={file.url} />
+          <EditFileButton fileUrl={blob.url} name={blob.pathname} />
+          <DeleteForm fileUrl={blob.url} />
         </li>
       ))}
     </ul>

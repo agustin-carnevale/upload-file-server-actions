@@ -42,3 +42,30 @@ export async function deleteFile(prevState: FormState, formData: FormData) {
     return { status: "error", message: "" } as FormState;
   }
 }
+
+export async function renameFile(prevState: FormState, formData: FormData) {
+  const fileUrl = formData.get("fileUrl") as string;
+  const newName = formData.get("newName") as string;
+
+  try {
+    // Get original file from url
+    const fileResponse = await fetch(fileUrl);
+    const fileBuffer = await fileResponse.arrayBuffer();
+
+    // Create a new copy with new name
+    await put(newName, fileBuffer, {
+      access: "public",
+    });
+
+    // Delete original file from storage
+    await del(fileUrl);
+
+    revalidatePath("/");
+    return {
+      status: "success",
+      message: "",
+    } as FormState;
+  } catch (e) {
+    return { status: "error", message: "" } as FormState;
+  }
+}
