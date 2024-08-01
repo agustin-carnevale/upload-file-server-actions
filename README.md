@@ -11,7 +11,7 @@ To run the project locally:
 ```bash
 git clone
 cd project-directory
-cp .env.local .env
+cp .env.template .env.local
 (and fill BLOB_READ_WRITE_TOKEN)
 yarn install
 yarn dev
@@ -25,3 +25,5 @@ Also keep in mind that I did the minimum and necessary, but obviously there is a
 I do realize the user experience is not the best as it is but could be improve without to much adittions to the code, for this taks I only focused on the main functionality and the use of server actions to handle forms.
 
 In regards to 1-a, 1-b and 1-c, I did not really understand what was the purpose of those (just calling a random 3rd party API), but I did leave some comments on the code to mark where I would make those calls if necesary, for example for tracing/observability/monitoring purposes (if those were important points we can always discuss it and I could make the changes needed).
+
+Other clarification, even though I did add the fake delay to show the list of files skeleton component, and you can see it perfectly when running the project locally, but is not the case for the deployed app at vercel (I could probably make it show also at the deployed app but honestly I didn't have the time to look into it, it is probably related to optimization or caching when you run yarn build for prod, but I need to look into it to be sure).

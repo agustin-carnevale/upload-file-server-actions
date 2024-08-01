@@ -3,7 +3,7 @@ import { wait } from "@/lib/utils";
 import { DeleteForm } from "@/components/form/DeleteFileForm";
 import { EditFileButton } from "./EditFileButton";
 
-const FAKE_DELAY_MS = 9000;
+const FAKE_DELAY_MS = 5000;
 
 export async function FilesList() {
   async function allFiles() {
